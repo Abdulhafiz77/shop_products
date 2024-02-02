@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number",
+            "default": 1
+        },
+        "product_name": {
+            "type": "string",
+            "default": "url"
+        },
+        "type": {
+            "type": "string",
+            "default": "string"
+        },
+        "entir_price": {
+            "type": "number",
+            "default": 1
+        },
+        "exit_price": {
+            "type": "number",
+            "default": 1
+        },
+        "begin_time": {
+            "type":"string",
+            "default":"string"
+        },
+        "end_time": {
+            "type": "string",
+            "default": "string"
+        },
+        "create_at": {
+            "type": "string",
+            "default": "string"
+        },
+        "update_at": {
+            "type": "string",
+            "default": "string"
+        }
+    },
+    "required": [
+        "product_name",
+        "type",
+        "entir_price",
+        "exit_price",
+        "begin_time",
+        "end_time"
+      ]
+}

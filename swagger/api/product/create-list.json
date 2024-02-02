@@ -1,0 +1,93 @@
+{
+    "post": {
+      "tags": [
+        "Product"
+      ],
+      "security": [
+        {
+          "Bearer": [
+            "Products"
+          ]
+        }
+      ],
+      "summary": "Save Product",
+      "operationId": "saveProduct",
+      "parameters": [
+        
+        
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddProduct"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "default": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "get": {
+      "tags": [
+        "Product"
+      ],
+      "security": [
+        {
+          "Bearer": [
+            "Products"
+          ]
+        }
+      ],
+      "summary": "GET Product list",
+      "operationId": "getProductList",
+      "parameters": [
+        {
+          "in": "query",
+          "name": "page",
+          "required": false,
+          "type": "integer",
+          "default": 1
+        },
+        {
+          "in": "query",
+          "name": "limit",
+          "required": false,
+          "type": "integer",
+          "default": 10
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Success response",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

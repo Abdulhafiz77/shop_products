@@ -1,0 +1,8 @@
+product_name
+suroy
+type
+id
+ enter_price
+ exit_price
+ benifts
+ 

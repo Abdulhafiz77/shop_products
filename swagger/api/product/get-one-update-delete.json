@@ -1,0 +1,124 @@
+{
+"get": {
+    "tags": [
+        "Product"
+    ],
+    "security": [
+        {
+            "Bearer": [
+                "Products"
+            ]
+        }
+    ],
+    "summary": "GET Product by id",
+    "operationId": "GET Product by id",
+    "parameters": [
+        {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "number"
+        }
+    ],
+    "responses": {
+        "200": {
+            "description": "",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Product"
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
+"put": {
+    "tags": [
+        "Product"
+    ],
+    "security": [
+        {
+            "Bearer": [
+                "Products"
+            ]
+        }
+    ],
+    "summary": "update Product",
+    "operationId": "update Product",
+    "parameters": [
+        {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "number"
+        }
+    ],
+    "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddProduct"
+            }
+          }
+        },
+        "required": true
+      },
+    "responses": {
+        "200": {
+            "description": "",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "#/components/schemas/Product"
+                    }
+                }
+            }
+        }
+    }
+},
+"delete": {
+    "tags": [
+        "Product"
+    ],
+    "security": [
+        {
+            "Bearer": [
+                "Products"
+            ]
+        }
+    ],
+    "summary": "Delete by id Product",
+    "operationId": "Delete by id Product",
+    "parameters": [
+        {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "number",
+            "default": 1
+        }
+    ],
+    "responses": {
+        "200": {
+            "description": "",
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "success": {
+                                "type": "boolean",
+                                "default": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}
