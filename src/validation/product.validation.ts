@@ -3,10 +3,8 @@ import * as Joi from 'joi'
 const product_add_joi = Joi.object({
     product_name: Joi.string().required(),
     type: Joi.string().required(),
-    entir_price: Joi.number().required(),
-    exit_price: Joi.number().required(), 
-    begin_time: Joi.date().required(),
-    end_time: Joi.date().required()
+    product_count: Joi.number().required()
+   
 }).unknown(true);
 
 const id_joi = Joi.object({

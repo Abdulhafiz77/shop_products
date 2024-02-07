@@ -1,6 +1,10 @@
-export * from './product'
+export * from './product.routes'
+export * from './boxoffice.routes'
+export * from './warehouse.routes'
 import express from 'express'
-import { ProductRoutes } from './product';
+import { ProductRoutes } from './product.routes';
+import { WarehouseRoutes } from './warehouse.routes';
+import { BoxofficeRoutes } from './boxoffice.routes';
 
 
 function nestedRoutes(this: any, path, configure) {
@@ -19,8 +23,14 @@ export const routes = (app: express.Application) => {
 
     expressRouter['prefix']('/api', app => {
 
-        app['prefix']('/shop', data => {
+        app['prefix']('/products', data => {
             ProductRoutes(data)
+        });
+        app['prefix']('/warehouse', data => {
+            WarehouseRoutes(data)
+        });
+        app['prefix']('/boxoffice', data => {
+            BoxofficeRoutes(data)
         });
 
     })

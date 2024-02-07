@@ -1,28 +1,19 @@
-import {  ProductModel, PaginationParams, ValidatedRequestBody, ValidatedRequestQuery } from '../models';
+import { PaginationParams, ValidatedRequestBody, ValidatedRequestQuery, WarehouseModel } from '../models';
 import { ValidatedRequest } from 'express-joi-validation';
 import { ErrorService, getPaginationResponse } from '../utils';
-import { ProductRepository } from '../repository';
+import { WarehouseRepository } from '../repository';
 
 
-export class ProductController {
+export class WarehouseController {
     static async getAll(req: ValidatedRequest<ValidatedRequestQuery<PaginationParams>>, res) {
         try {
-            let data = await ProductRepository.getAll(req.query);
+            let data = await WarehouseRepository.getAll(req.query);
             if (!data[0]) return res.send(null);
 
             if (req.query.limit && !isNaN(req.query.page))
-                return res.send(await getPaginationResponse<ProductModel>(data, req.query.page, req.query.limit, Number(data[0].count)))
+                return res.send(await getPaginationResponse<WarehouseModel>(data, req.query.page, req.query.limit, Number(data[0].count)))
 
 
-            return res.send(data);
-        } catch (error) {
-            return ErrorService.error(res, error);
-        }
-    }
-    static async getProductCount(req: ValidatedRequest<any>, res) {
-        try {
-
-            let data = await ProductRepository.GetProductCount(req.params.id);
             return res.send(data);
         } catch (error) {
             return ErrorService.error(res, error);
@@ -31,16 +22,16 @@ export class ProductController {
     static async getById(req: ValidatedRequest<any>, res) {
         try {
 
-            let data = await ProductRepository.getById(req.params.id);
+            let data = await WarehouseRepository.getById(req.params.id);
             return res.send(data);
         } catch (error) {
             return ErrorService.error(res, error);
         }
     }
-    static async create(req: ValidatedRequest<ValidatedRequestBody<ProductModel>>, res) {
+    static async create(req: ValidatedRequest<ValidatedRequestBody<WarehouseModel>>, res) {
         try {
 
-            const data = await ProductRepository.create(req.body)
+            const data = await WarehouseRepository.create(req.body)
 
             return res.send(data);
 
@@ -48,12 +39,12 @@ export class ProductController {
             return ErrorService.error(res, error);
         }
     }
-    static async update(req: ValidatedRequest<ValidatedRequestBody<ProductModel>>, res) {
+    static async update(req: ValidatedRequest<ValidatedRequestBody<WarehouseModel>>, res) {
         try {
             req.body.id = req.params.id;
 
-            let checkId = await ProductRepository.getById(req.params.id);
-            let data = await ProductRepository.update(req.body);
+            let checkId = await WarehouseRepository.getById(req.params.id);
+            let data = await WarehouseRepository.update(req.body);
 
             return res.send(data);
         } catch (error) {
@@ -64,7 +55,7 @@ export class ProductController {
     static async delete(req: ValidatedRequest<any>, res) {
         try {
 
-            await ProductRepository.delete(req.params.id);
+            await WarehouseRepository.delete(req.params.id);
 
             return res.send({ success: true });
 
